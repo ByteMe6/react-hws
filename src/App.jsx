@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import user from "./components/user.json";
 import Profile from "./components/Profile";
-
+import data from "./components/data.json";
+import Statistics from "./components/Statistics";
 
 class App extends Component {
   render() {
@@ -13,7 +14,9 @@ class App extends Component {
           location={user.location}
           avatar={user.avatar}
           stats={user.stats}
-        />
+        /><br/>
+        <Statistics title="Upload stats" stats={data} />
+        {/* <Statistics stats={data} /> */}
       </main>
     );
   }
