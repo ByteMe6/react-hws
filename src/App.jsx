@@ -1,21 +1,22 @@
-import React from 'react'
-import Greeting from './Greeting'
-import Message from './Message'
-import Button from './Button'
-import './App.css'
+import React, { Component } from "react";
+import user from "./components/user.json";
+import Profile from "./components/Profile";
 
-const App = () => {
-  const handleClick = () => {
-    console.log('Кнопка натиснута!')
+
+class App extends Component {
+  render() {
+    return (
+      <main className="main">
+        <Profile
+          username={user.username}
+          tag={user.tag}
+          location={user.location}
+          avatar={user.avatar}
+          stats={user.stats}
+        />
+      </main>
+    );
   }
-
-  return (
-    <div>
-      <Greeting name="ByteMe6" />
-      <Message text="message (text)" />
-      <Button onClick={handleClick} />
-    </div>
-  )
 }
 
-export default App
+export default App;
