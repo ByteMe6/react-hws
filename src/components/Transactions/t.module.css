@@ -1,0 +1,24 @@
+.transaction-history {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+.transaction-history th,
+.transaction-history td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.transaction-history th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.transaction-history tr:hover {
+    background-color: #f1f1f1;
+}

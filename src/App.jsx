@@ -3,6 +3,10 @@ import user from "./components/user.json";
 import Profile from "./components/Profile";
 import data from "./components/data.json";
 import Statistics from "./components/Statistics";
+import Friends from './components/Friends/Friends';
+import Transactions from "./components/Transactions/Transactions";
+
+
 
 class App extends Component {
   render() {
@@ -17,6 +21,9 @@ class App extends Component {
         /><br/>
         <Statistics title="Upload stats" stats={data} />
         {/* <Statistics stats={data} /> */}
+
+        <Friends/>
+        <Transactions />
       </main>
     );
   }
