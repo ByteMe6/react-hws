@@ -1,0 +1,68 @@
+.goodBtn {
+    border: 0;
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.neutralBtn {
+    border: 0;
+    background: #FFC107;
+    color: #333;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.badBtn {
+    border: 0;
+    background: #F44336;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.goodBtn:hover, .neutralBtn:hover, .badBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.goodBtn:active, .neutralBtn:active, .badBtn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.goodBtn:hover {
+    animation: pulse 1.5s infinite;
+}
+
+.neutralBtn:hover {
+    animation: pulse 2s infinite;
+}
+
+.badBtn:hover {
+    animation: pulse 1s infinite;
+}
+
+/* стили писала ии, но весь остальной код мой, знаю вы такое не любите, но думаю что стили - это не критично */

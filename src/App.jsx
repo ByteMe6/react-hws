@@ -1,13 +1,31 @@
-import React, { Component } from "react";
-import arr from "./recepies.json" // мне это нейронка с фото достала
-import Dish from "./components/Dish";
+import { Component } from "react";
+import Stats from "./components/Stats";
+import Rev from "./components/Rev";
 
 class App extends Component {
-  state = {};
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  onFeedback = (type) => {
+    this.setState((prevState) => ({
+      [type]: prevState[type] + 1,
+    }));
+  };
+
   render() {
-    return <main className="main">
-      <Dish arr={arr}/>
-    </main>;
+    return (
+      <main className="main">
+        <Rev onFeedback={this.onFeedback} />
+        <Stats 
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+        />
+      </main>
+    );
   }
 }
 
