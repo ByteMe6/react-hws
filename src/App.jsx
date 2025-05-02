@@ -23,6 +23,7 @@ class App extends Component {
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
+          total={Number(this.state.good) + Number(this.state.neutral) + Number(this.state.bad)}
         />
       </main>
     );
