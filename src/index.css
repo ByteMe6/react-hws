@@ -1,180 +1,124 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-/* Document
-   ========================================================================== */
 html {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-/* Sections
-   ========================================================================== */
 body {
-  margin: 0;
-  color: #333;
-  background-color: #fff;
+    margin: 0;
+    font-family: Arial, sans-serif; /* Нормализация шрифта */
 }
 
-main {
-  display: block;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
 }
 
-/* Text-level semantics
-   ========================================================================== */
+hr {
+    height: 0; /* 1 */
+    color: inherit; /* 2 */
+    overflow: visible; /* 3 */
+}
+
+pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+}
+
 a {
-  background-color: transparent;
-  color: #0066cc;
-  text-decoration: none;
+    background-color: transparent; /* 1 */
 }
 
-a:hover {
-  text-decoration: underline;
+abbr[title] {
+    text-decoration: underline; /* 1 */
+    text-decoration: underline dotted; /* 2 */
 }
 
-/* Forms
-   ========================================================================== */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+b,
+strong {
+    font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+}
+
+small {
+    font-size: 80%;
+}
+
+sub {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    bottom: 0.25em;
+}
+
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    top: 0.25em;
+}
+
+ul,
+ol {
+    padding-left: 1.5em;
+}
+
+table {
+    border-collapse: collapse;
 }
 
 button,
 input {
-  overflow: visible;
+    font-family: inherit; /* 1 */
+    font-size: inherit; /* 2 */
+    line-height: inherit; /* 3 */
 }
 
 button,
-select {
-  text-transform: none;
+button {
+    overflow: visible;
 }
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-  background-color: #f0f0f0;
-  cursor: pointer;
+input {
+    /* 1 */
+    margin: 0;
 }
 
-button:hover,
-[type="button"]:hover,
-[type="reset"]:hover,
-[type="submit"]:hover {
-  background-color: #e0e0e0;
+button {
+    /* 1 */
+    text-transform: none; /* 2 */
 }
 
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+input {
+    /* 1 */
+    overflow: visible;
 }
 
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+textarea {
+    overflow: auto;
 }
-.gallery {
-  list-style: none;
+
+[hidden] {
+    display: none;
+}
+
+.gifs{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 0;
-  margin: 20px auto;
-  max-width: 1200px;
+  justify-content: space-around;
 }
-
-.gallery-item {
-  flex: 1 1 calc(33.333% - 10px);
-  box-sizing: border-box;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-}
-
-.gallery-item img {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 8px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.pagination button {
-  padding: 6px 12px;
-  font-size: 14px;
-  cursor: pointer;
-}
-/* App.css */
-
-main {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.05);
+main{
+  text-align: center;
 }
