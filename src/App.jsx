@@ -1,13 +1,19 @@
 import { Component } from "react";
 import { fetchGifs } from "./components/ApiRequest";
 import Form from "./components/Form";
+import Pagination from "./components/Pagination";
+import GifCard from "./components/GifCard";
+import './App.css';
 
 class App extends Component {
   state = {
     gifs: [],
     error: null,
     keyword: " ",
-    isLoading: false
+    isLoading: false,
+    currentPage: 1,
+    totalPages: 1,
+    itemsPerPage: 10
   };
 
   async componentDidMount() {
@@ -19,12 +25,16 @@ class App extends Component {
     if (typeof gifs === 'string') { 
       this.setState({ error: gifs, isLoading: false });
     } else {
-      this.setState({ gifs, isLoading: false });
+      this.setState({ 
+        gifs, 
+        isLoading: false,
+        totalPages: Math.ceil(gifs.length / this.state.itemsPerPage)
+      });
     }
   }
 
   takeValue = async (newValue) => {
-    this.setState({ keyword: newValue, isLoading: true }, async () => {
+    this.setState({ keyword: newValue, isLoading: true, currentPage: 1 }, async () => {
       const apiKey = import.meta.env.VITE_ApiKey;
       const gifs = await fetchGifs(apiKey, newValue);
       // Добавляем задержку в 1 секунду
@@ -32,32 +42,59 @@ class App extends Component {
       if (typeof gifs === 'string') {
         this.setState({ error: gifs, isLoading: false });
       } else {
-        this.setState({ gifs, isLoading: false });
+        this.setState({ 
+          gifs, 
+          isLoading: false,
+          totalPages: Math.ceil(gifs.length / this.state.itemsPerPage)
+        });
       }
     });
   }
 
+  handlePageChange = (newPage) => {
+    this.setState({ currentPage: newPage });
+  }
+
   render() {
+    const { gifs, currentPage, itemsPerPage, totalPages } = this.state;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentGifs = gifs.slice(startIndex, endIndex);
+
     return (
       <main className="main">
-        <div className="gifs">
+        <Form takeV={this.takeValue} />
+        
+        <div className="gifs-container">
           {this.state.isLoading ? (
             <div className="loading">
               <h2>Загрузка...</h2>
             </div>
           ) : this.state.error ? (
-            <h2>{this.state.error}</h2>
+            <div className="error-message">
+              {this.state.error}
+            </div>
           ) : (
-            Array.isArray(this.state.gifs) && this.state.gifs.length > 0 ? (
-              this.state.gifs.map(gif => (
-                <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
-              ))
+            Array.isArray(gifs) && gifs.length > 0 ? (
+              <>
+                <div className="gifs-grid">
+                  {currentGifs.map(gif => (
+                    <GifCard key={gif.id} gif={gif} />
+                  ))}
+                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={this.handlePageChange}
+                />
+              </>
             ) : (
-              <h2>Nothing</h2>
+              <div className="no-results">
+                Ничего не найдено
+              </div>
             )
           )}
         </div>
-        <Form takeV={this.takeValue}></Form>
       </main>
     );
   }
