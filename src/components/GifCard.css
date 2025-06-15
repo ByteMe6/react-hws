@@ -11,11 +11,13 @@
     flex-direction: column;
     position: relative;
     width: 300px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .gif-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(0, 242, 254, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-color: rgba(0, 242, 254, 0.4);
 }
 
@@ -45,6 +47,7 @@
     padding-top: 75%;
     overflow: hidden;
     background: linear-gradient(45deg, #1a1a2e, #16213e);
+    height: 200px;
 }
 
 .gif-card-image img {
